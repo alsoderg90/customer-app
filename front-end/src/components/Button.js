@@ -1,8 +1,14 @@
-const Button = ({text, value, data}) => {
+import customerService from '../services/customer'
+
+const Button = ({text, value, dataWeb, dataDB, setData}) => {
 
     const handleClick = () => {
-        const as = data.filter(item => item.id === value)
-        console.log(as)
+        const customer = dataWeb.filter(item => item.id === value)
+
+        customerService
+        .create(customer[0])
+        .then(setData(dataDB.concat(customer[0]))) 
+
     }
 
     return (
