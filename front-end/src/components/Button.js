@@ -1,6 +1,6 @@
 import customerService from '../services/customer'
 
-const Button = ({text, value, dataWeb, dataDB, setData}) => {
+const CustomButton = ({text, value, dataWeb, dataDB, setData}) => {
 
     const handleClick = () => {
         const customer = dataWeb.filter(item => item.id === value)
@@ -12,11 +12,11 @@ const Button = ({text, value, dataWeb, dataDB, setData}) => {
     }
 
     return (
-    <button onClick={handleClick}>
+    <button className="btn btn-primary" onClick={handleClick}>
         {text}
     </button>
     )
 
 }
 
-export default Button
+export default CustomButton
