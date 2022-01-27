@@ -1,0 +1,16 @@
+F:\albert\MyTemp\Ennakkotehtäviä\finazilla\back-end\back-end\obj\Release\net6.0\PubTmp\Out\back-end.exe
+F:\albert\MyTemp\Ennakkotehtäviä\finazilla\back-end\back-end\obj\Release\net6.0\PubTmp\Out\appsettings.Development.json
+F:\albert\MyTemp\Ennakkotehtäviä\finazilla\back-end\back-end\obj\Release\net6.0\PubTmp\Out\appsettings.json
+F:\albert\MyTemp\Ennakkotehtäviä\finazilla\back-end\back-end\obj\Release\net6.0\PubTmp\Out\back-end.dll
+F:\albert\MyTemp\Ennakkotehtäviä\finazilla\back-end\back-end\obj\Release\net6.0\PubTmp\Out\back-end.runtimeconfig.json
+F:\albert\MyTemp\Ennakkotehtäviä\finazilla\back-end\back-end\obj\Release\net6.0\PubTmp\Out\back-end.pdb
+F:\albert\MyTemp\Ennakkotehtäviä\finazilla\back-end\back-end\obj\Release\net6.0\PubTmp\Out\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
+F:\albert\MyTemp\Ennakkotehtäviä\finazilla\back-end\back-end\obj\Release\net6.0\PubTmp\Out\Microsoft.EntityFrameworkCore.dll
+F:\albert\MyTemp\Ennakkotehtäviä\finazilla\back-end\back-end\obj\Release\net6.0\PubTmp\Out\Microsoft.EntityFrameworkCore.Abstractions.dll
+F:\albert\MyTemp\Ennakkotehtäviä\finazilla\back-end\back-end\obj\Release\net6.0\PubTmp\Out\Microsoft.EntityFrameworkCore.InMemory.dll
+F:\albert\MyTemp\Ennakkotehtäviä\finazilla\back-end\back-end\obj\Release\net6.0\PubTmp\Out\Microsoft.EntityFrameworkCore.Relational.dll
+F:\albert\MyTemp\Ennakkotehtäviä\finazilla\back-end\back-end\obj\Release\net6.0\PubTmp\Out\Microsoft.OpenApi.dll
+F:\albert\MyTemp\Ennakkotehtäviä\finazilla\back-end\back-end\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
+F:\albert\MyTemp\Ennakkotehtäviä\finazilla\back-end\back-end\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
+F:\albert\MyTemp\Ennakkotehtäviä\finazilla\back-end\back-end\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll
+F:\albert\MyTemp\Ennakkotehtäviä\finazilla\back-end\back-end\obj\Release\net6.0\PubTmp\Out\back-end.deps.json

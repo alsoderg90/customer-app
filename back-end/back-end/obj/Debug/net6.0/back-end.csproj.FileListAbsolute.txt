@@ -66,3 +66,4 @@ F:\albert\MyTemp\Ennakkotehtäviä\finazilla\back-end\back-end\obj\Debug\net6.0\
 F:\albert\MyTemp\Ennakkotehtäviä\finazilla\back-end\back-end\obj\Debug\net6.0\ref\back-end.dll
 F:\albert\MyTemp\Ennakkotehtäviä\finazilla\back-end\back-end\obj\Debug\net6.0\back-end.pdb
 F:\albert\MyTemp\Ennakkotehtäviä\finazilla\back-end\back-end\obj\Debug\net6.0\back-end.genruntimeconfig.cache
+F:\albert\MyTemp\Ennakkotehtäviä\finazilla\back-end\back-end\bin\Debug\net6.0\back-end.staticwebassets.runtime.json

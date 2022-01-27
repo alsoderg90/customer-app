@@ -38,7 +38,7 @@ const App = () => {
  
   useEffect(() => {
     axios
-     .get('http://www.filltext.com/?rows=5&pretty=true&id={index}&name={business}&address={addressObject}')
+     .get('https://www.filltext.com/?rows=75&pretty=true&id={index}&name={business}&address={addressObject}')
      .then(response => {
        setDataWeb(response.data)
        console.log(response.data)
@@ -56,7 +56,7 @@ const App = () => {
             <NavLink 
               exact={true} 
               activeClassName='is-active' 
-              to="/customers"
+              to="/"
               onClick={() => { 
                 setActive(-1)
                 setSelected({}) 
@@ -76,43 +76,11 @@ const App = () => {
                 }}> Database 
               <i className="fa-solid fa-database icon"></i>
             </NavLink>
-          </li>
+          </li>          
         </ul>
       </div>
 
     <Switch>
-      <Route path="/customers">
-      <div className='container'>
-        <div className='row'>
-          <div className='col'>
-            <SearchField 
-              setFilter={setFilter}>
-            </SearchField>
-            <List
-             index={-1} 
-             data={dataWeb} 
-             clickEvent={setSelected}
-             filter={filter}
-             setActive={setActive}
-             activeIndex={activeIndex}>   
-            </List>
-          </div>
-        </div>
-        </div>
-        <div className='button-field'>
-          <p>Selected: {selected.name}</p> 
-          <Button 
-            text="Add" 
-            id={selected.id} 
-            dataWeb={dataWeb}
-            dataDB={dataDB} 
-            setData={setDataDB}
-            color="blue"
-            type="add">
-          </Button>
-        </div>
-      </Route>
-
       <Route path="/database">
       <div className='container'>
         <div className='row'>
@@ -145,6 +113,38 @@ const App = () => {
         </div>
       </div>
       </Route>
+
+      <Route path="/">
+      <div className='container'>
+        <div className='row'>
+          <div className='col'>
+            <SearchField 
+              setFilter={setFilter}>
+            </SearchField>
+            <List
+             index={-1} 
+             data={dataWeb} 
+             clickEvent={setSelected}
+             filter={filter}
+             setActive={setActive}
+             activeIndex={activeIndex}>   
+            </List>
+          </div>
+        </div>
+        </div>
+        <div className='button-field'>
+          <p>Selected: {selected.name}</p> 
+          <Button 
+            text="Add" 
+            id={selected.id} 
+            dataWeb={dataWeb}
+            dataDB={dataDB} 
+            setData={setDataDB}
+            color="blue"
+            type="add">
+          </Button>
+        </div>
+      </Route>      
     </Switch>
   </Router>
   )
