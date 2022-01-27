@@ -1,7 +1,7 @@
 ### Single-page application (SPA) created to learn basics of .NET framework"
 
 
-[ Test Here! } (https://alsoderg90.github.io/test-app/)
+[Test Here!](https://alsoderg90.github.io/deployed/)
 
 - [ ] Front-end: React
 - [ ] Backend: .NET
