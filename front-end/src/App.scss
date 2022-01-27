@@ -1,4 +1,5 @@
 $blue: #0d6efd ;
+$dark: #333;
 
 body {
     margin: 0;
@@ -6,6 +7,21 @@ body {
     font-family: 'Montserrat', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  .list-group {
+    padding-bottom: 2em;
+  
+  }
+
+  .search-field {
+    padding-bottom: 0.5em;
+    button {
+        margin-left: .1em;
+        background-color: white;
+        color: blue;
+        border: 0px;
+    }
   }
 
   .icon {
@@ -28,7 +44,7 @@ body {
         margin: 0;
         padding: 0;
         overflow: hidden;
-        background-color: #333;  
+        background-color: $dark;  
         
         li {
             float: left;
@@ -82,8 +98,6 @@ body {
   }  
 
 }
-
-
   
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

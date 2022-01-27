@@ -5,7 +5,8 @@ import { BrowserRouter as Router,
 import List from './components/List'
 import Button from './components/Button'
 import CustomerInfo from './components/CustomerInfo'
-import customerService from './services/customer'
+import CustomerService from './services/customer'
+import SearchField from './components/SearchField'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -14,15 +15,14 @@ const App = () => {
   //data from web
   const [ dataWeb, setDataWeb ] = useState([])
   //data from database
-  const [ dataDB, setDataDB] = useState([])
+  const [ dataDB, setDataDB ] = useState([])
   // selected list item
-  const [ selected, setSelected ] = useState({
-    id : -1,
-    name : ""
-  })
+  const [ selected, setSelected ] = useState({})
+  // text filter 
+  const [ filter, setFilter ] = useState("")
 
   useEffect(() => {
-    customerService
+    CustomerService
      .getAll()
      .then(response => {
        setDataDB(response.data)
@@ -39,6 +39,7 @@ const App = () => {
      .get('http://www.filltext.com/?rows=5&pretty=true&id={index}&name={business}&address={addressObject}')
      .then(response => {
        setDataWeb(response.data)
+       console.log(response.data)
      })
      .catch(error => {
       console.log(error)
@@ -73,9 +74,13 @@ const App = () => {
       <div className='container'>
         <div className='row'>
           <div className='col'>
+            <SearchField 
+              setFilter={setFilter}>
+            </SearchField>
             <List 
-            data={dataWeb} 
-            clickEvent={setSelected}>
+             data={dataWeb} 
+             clickEvent={setSelected}
+             filter={filter}>
             </List>
           </div>
         </div>
@@ -96,13 +101,17 @@ const App = () => {
       <div className='container'>
         <div className='row'>
           <div className='col'>
+            <SearchField 
+              setFilter={setFilter}>
+            </SearchField>
             <List 
               data={dataDB} 
-              clickEvent={setSelected}>
+              clickEvent={setSelected}
+              filter={filter}>
             </List>
           </div>
         <div className='button col'>
-          <CustomerInfo>
+          <CustomerInfo customer={selected}>
           </CustomerInfo>
           <Button 
             text="Delete" 
