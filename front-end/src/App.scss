@@ -1,5 +1,6 @@
 $blue: #0d6efd ;
 $dark: #333;
+$red: rgb(196, 34, 34);
 
 body {
     margin: 0;
@@ -14,13 +15,25 @@ body {
   
   }
 
+  .button {
+    background-color: $blue;
+    margin-left: .1em;
+    border: 0px;
+    border-radius: 5px;
+    color: white;
+
+    &.red {
+      background-color: $red;
+    }
+  }
+
   .search-field {
     padding-bottom: 0.5em;
+
     button {
-        margin-left: .1em;
-        background-color: white;
-        color: blue;
-        border: 0px;
+      background: transparent;
+      border: 0px;
+      color: $blue;
     }
   }
 
@@ -32,7 +45,7 @@ body {
       padding-bottom: 2em;
   }
   
-  .button {
+  .button-field {
       text-align: center;
   }
 
@@ -83,7 +96,7 @@ body {
     flex: 75%;
   }
   
-  .info-container {
+  .info-box {
       background-color: #f2f2f2;
       padding: 5px 20px 15px 20px;
       border: 1px solid lightgrey;

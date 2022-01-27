@@ -1,7 +1,6 @@
 const searchField = ({ setFilter }) => {
     const search = (e) => {
         const filter = e.target.value.toUpperCase()
-        
         setFilter(filter)
     }
 

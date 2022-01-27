@@ -20,6 +20,8 @@ const App = () => {
   const [ selected, setSelected ] = useState({})
   // text filter 
   const [ filter, setFilter ] = useState("")
+  // index of the active list element
+  const [ activeIndex, setActive ] = useState("")
 
   useEffect(() => {
     CustomerService
@@ -54,7 +56,12 @@ const App = () => {
             <NavLink 
               exact={true} 
               activeClassName='is-active' 
-              to="/customers"> Customers
+              to="/customers"
+              onClick={() => { 
+                setActive(-1)
+                setSelected({}) 
+                }}> 
+              Customers
               <i className="fa-solid fa-users icon"></i>
             </NavLink>
           </li>
@@ -62,7 +69,11 @@ const App = () => {
             <NavLink 
               exact={true}
               activeClassName='is-active' 
-              to="/database"> Database 
+              to="/database"
+              onClick={() => { 
+                setActive(-1)
+                setSelected({}) 
+                }}> Database 
               <i className="fa-solid fa-database icon"></i>
             </NavLink>
           </li>
@@ -77,22 +88,27 @@ const App = () => {
             <SearchField 
               setFilter={setFilter}>
             </SearchField>
-            <List 
+            <List
+             index={-1} 
              data={dataWeb} 
              clickEvent={setSelected}
-             filter={filter}>
+             filter={filter}
+             setActive={setActive}
+             activeIndex={activeIndex}>   
             </List>
           </div>
         </div>
         </div>
-        <div className='button'>
-          <p>Selected: { selected.name }</p> 
+        <div className='button-field'>
+          <p>Selected: {selected.name}</p> 
           <Button 
             text="Add" 
-            value={selected.id} 
+            id={selected.id} 
             dataWeb={dataWeb}
             dataDB={dataDB} 
-            setData={setDataDB}>
+            setData={setDataDB}
+            color="blue"
+            type="add">
           </Button>
         </div>
       </Route>
@@ -105,19 +121,26 @@ const App = () => {
               setFilter={setFilter}>
             </SearchField>
             <List 
+              index={-1} 
               data={dataDB} 
               clickEvent={setSelected}
-              filter={filter}>
+              filter={filter}
+              setActive={setActive}
+              activeIndex={activeIndex}>        
             </List>
           </div>
-        <div className='button col'>
+        <div className='info-box col'>
           <CustomerInfo customer={selected}>
           </CustomerInfo>
-          <Button 
-            text="Delete" 
-            value={selected.id} 
-            data={dataWeb}>
-          </Button>
+          <div className='button-field'>
+           <Button 
+             text="Delete" 
+             value={selected.id} 
+             data={dataWeb}
+             color="red"
+             type="delete">
+           </Button>
+          </div>
         </div>
         </div>
       </div>

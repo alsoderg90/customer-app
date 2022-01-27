@@ -1,18 +1,37 @@
 import customerService from '../services/customer'
 
-const CustomButton = ({text, value, dataWeb, dataDB, setData}) => {
+const CustomButton = ({text, id, dataWeb, dataDB, setData, color , type}) => {
 
     const handleClick = () => {
-        const customer = dataWeb.filter(item => item.id === value)
+
+        switch(type) {
+            case "delete":
+                deleteCustomer()
+                break
+            case "add":
+                addCustomer()
+                break;
+            default:
+        }
+    }
+
+    function deleteCustomer() {
+        window.confirm("Are You Sure?")
+    }
+
+    function addCustomer() {
+        const customer = dataWeb.filter(item => item.id === id)
         customerService
         .create(customer[0])
         .then(setData(dataDB.concat(customer[0]))) 
-
     }
     
     return (
-    <button className="btn btn-primary" onClick={handleClick}>
-        {text}
+    <button 
+      className={ `button ${color}` }
+      onClick={handleClick}
+      disabled={id ? false : true}>
+      {text}
     </button>
     )
 
