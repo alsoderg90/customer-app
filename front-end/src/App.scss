@@ -1,0 +1,92 @@
+$blue: #0d6efd ;
+
+body {
+    margin: 0;
+    font-family: 'Dongle', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .icon {
+      margin-left: 10px;
+  }
+
+  .ul-list {
+      padding-bottom: 2em;
+  }
+  
+  .button {
+      text-align: center;
+  }
+
+  .nav-bar {
+    padding-bottom: 2em;
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;  
+        
+        li {
+            float: left;
+
+            a {
+                display: block;
+                font-weight: 1000;
+                font-size: large;
+                color: $blue;
+                text-align: center;
+                margin: 14px 16px;
+                text-decoration: none;
+
+                &.is-active {
+                    border-bottom: 2px solid orange;
+                }
+          }
+        }
+    }
+  }
+
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  margin: 0 -16px;
+
+  .col-50 {
+    -ms-flex: 50%; /* IE10 */
+    flex: 50%;
+  }
+
+  .col-75 {
+    -ms-flex: 75%; /* IE10 */
+    flex: 75%;
+  }
+  
+  .info-container {
+      background-color: #f2f2f2;
+      padding: 5px 20px 15px 20px;
+      border: 1px solid lightgrey;
+      border-radius: 3px;
+      min-width: 15em;
+  }
+  
+  label {
+    margin-bottom: 10px;
+    display: block;
+    text-align: left;
+  }  
+
+}
+
+
+  
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+  
