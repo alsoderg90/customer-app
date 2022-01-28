@@ -3,10 +3,10 @@
 
 [Test Here!](https://alsoderg90.github.io/deployed/)
 
-- [ ] Front-end: React
-- [ ] Backend: .NET
+- [x] Front-end: React
+- [x] Backend: .NET
 
 
 - fetch data from internet/database and display
 - save data to database
-- delete data from database (not yet)
+- delete data from database 
