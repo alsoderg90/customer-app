@@ -38,7 +38,7 @@ app.MapPost("/api/customers", async (Customer customer, CustomerContext db) =>
         db.Customers.Add(customer);
         await db.SaveChangesAsync();
 
-        return Results.Created($"/customers/{customer.CustomerId}", customer);
+        return Results.Created($"/customers/{customer.Id}", customer);
     }) ;
 
 app.MapDelete("/api/customers/{id}", async (int id, CustomerContext db) =>

@@ -1,5 +1,6 @@
 const List = ({ data, clickEvent , filter, setActive, activeIndex }) => {
-
+    console.log(data);
+    
     const filtered = data.filter(customer => 
         customer.name.toUpperCase().includes(filter)
         )

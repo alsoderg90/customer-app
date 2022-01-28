@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiUrl = 'https://localhost:7100/api/customers/'
+const apiUrl = 'https://my-customer-app.azurewebsites.net/api/customers/'
 const customersUrl = 'https://www.filltext.com/?rows=5&pretty=true&id={index}&name={business}&address={addressObject}'
 
 const getCustomers = () => {
