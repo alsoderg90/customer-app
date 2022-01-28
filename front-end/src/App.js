@@ -1,14 +1,16 @@
 import './App.scss';
-import { BrowserRouter as Router, 
-  Switch, Route, NavLink, 
- } from "react-router-dom"
+import 'react-notifications-component/dist/theme.css'
 import List from './components/List'
-import Button from './components/Button'
+import Button from './components/CustomButton'
 import CustomerInfo from './components/CustomerInfo'
 import CustomerService from './services/customer'
 import SearchField from './components/SearchField'
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+
+import { ReactNotifications } from 'react-notifications-component'
+import { BrowserRouter as Router, 
+  Switch, Route, NavLink, } from "react-router-dom"
+
 
 
 const App = () => {
@@ -22,14 +24,12 @@ const App = () => {
   const [ filter, setFilter ] = useState("")
   // index of the active list element
   const [ activeIndex, setActive ] = useState("")
-
+  
   useEffect(() => {
     CustomerService
      .getAll()
      .then(response => {
        setDataDB(response.data)
-       console.log(response.data);
-       
      })
      .catch(error => {
       console.log(error)
@@ -37,11 +37,10 @@ const App = () => {
   }, [])
  
   useEffect(() => {
-    axios
-     .get('https://www.filltext.com/?rows=75&pretty=true&id={index}&name={business}&address={addressObject}')
+    CustomerService
+     .getCustomers()
      .then(response => {
        setDataWeb(response.data)
-       console.log(response.data)
      })
      .catch(error => {
       console.log(error)
@@ -49,7 +48,9 @@ const App = () => {
   }, [])
 
   return (
+    
     <Router>
+      <ReactNotifications/>
       <div className="nav-bar">
         <ul>
           <li>
@@ -84,6 +85,26 @@ const App = () => {
       <Route path="/database">
       <div className='container'>
         <div className='row'>
+        <div className='col'>
+          <div className='info-box col'>
+          <CustomerInfo customer={selected}>
+          </CustomerInfo>
+          <div className='button-field'>
+           <Button 
+             text="Delete" 
+             selected={selected}
+             setDataDB={setDataDB}
+             setDataWeb={setDataWeb}
+             setActive={setActive}
+             setSelected={setSelected}
+             dataWeb={dataWeb}
+             dataDB={dataDB} 
+             color="red"
+             type="delete">
+           </Button>
+           </div>
+          </div>
+        </div>
           <div className='col'>
             <SearchField 
               setFilter={setFilter}>
@@ -97,19 +118,6 @@ const App = () => {
               activeIndex={activeIndex}>        
             </List>
           </div>
-        <div className='info-box col'>
-          <CustomerInfo customer={selected}>
-          </CustomerInfo>
-          <div className='button-field'>
-           <Button 
-             text="Delete" 
-             value={selected.id} 
-             data={dataWeb}
-             color="red"
-             type="delete">
-           </Button>
-          </div>
-        </div>
         </div>
       </div>
       </Route>
@@ -121,6 +129,20 @@ const App = () => {
             <SearchField 
               setFilter={setFilter}>
             </SearchField>
+            <div className='button-field'>
+              <Button 
+                text="Add" 
+                selected={selected} 
+                dataWeb={dataWeb}
+                dataDB={dataDB} 
+                setDataDB={setDataDB}
+                setDataWeb={setDataWeb}
+                setActive={setActive}
+                setSelected={setSelected}
+                color="blue"
+                type="add">
+              </Button> 
+            </div>
             <List
              index={-1} 
              data={dataWeb} 
@@ -131,18 +153,6 @@ const App = () => {
             </List>
           </div>
         </div>
-        </div>
-        <div className='button-field'>
-          <p>Selected: {selected.name}</p> 
-          <Button 
-            text="Add" 
-            id={selected.id} 
-            dataWeb={dataWeb}
-            dataDB={dataDB} 
-            setData={setDataDB}
-            color="blue"
-            type="add">
-          </Button>
         </div>
       </Route>      
     </Switch>

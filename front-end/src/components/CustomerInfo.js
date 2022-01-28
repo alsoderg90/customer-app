@@ -1,4 +1,4 @@
-const CustomerInfo = ({customer}) => {
+const CustomerInfo = ( {customer }) => {
     const ObjectLengt = Object.keys(customer).length
 
 return(

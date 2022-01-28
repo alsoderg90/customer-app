@@ -1,5 +1,3 @@
-import { useState } from "react"
-
 const List = ({ data, clickEvent , filter, setActive, activeIndex }) => {
 
     const filtered = data.filter(customer => 
