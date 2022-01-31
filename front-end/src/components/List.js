@@ -1,8 +1,8 @@
-const List = ({ data, clickEvent , filter, setActive, activeIndex }) => {
-    console.log(data);
+import React from 'react'
+const List = ( props ) => {
     
-    const filtered = data.filter(customer => 
-        customer.name.toUpperCase().includes(filter)
+    const filtered = props.data.filter(customer => 
+        customer.name.toUpperCase().includes(props.filter)
         )
     
     return(
@@ -11,11 +11,12 @@ const List = ({ data, clickEvent , filter, setActive, activeIndex }) => {
             return ( 
             <li key={i} 
                 onClick={(e) => {
-                    setActive(i)
-                    clickEvent(item)
+                    props.setActive(i)
+                    props.setSelected(item)
                 }}
-                className={i === activeIndex ? "list-group-item active" : "list-group-item"  }>       
-                {item.name} 
+                className={i === props.activeIndex ? "list-group-item active" : "list-group-item"  }>       
+                {item.name}
+                {React.cloneElement(props.children, {selected: item})} 
             </li>
             )}
         )}

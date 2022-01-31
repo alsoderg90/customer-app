@@ -1,5 +1,6 @@
 import './App.scss';
 import 'react-notifications-component/dist/theme.css'
+import data from './data.json'
 import List from './components/List'
 import Button from './components/CustomButton'
 import CustomerInfo from './components/CustomerInfo'
@@ -44,6 +45,7 @@ const App = () => {
      })
      .catch(error => {
       console.log(error)
+      setDataWeb(data)
     })
   }, [])
 
@@ -61,6 +63,7 @@ const App = () => {
               onClick={() => { 
                 setActive(-1)
                 setSelected({}) 
+                setFilter("")
                 }}> 
               Customers
               <i className="fa-solid fa-users icon"></i>
@@ -73,7 +76,8 @@ const App = () => {
               to="/database"
               onClick={() => { 
                 setActive(-1)
-                setSelected({}) 
+                setSelected({})
+                setFilter("") 
                 }}> Database 
               <i className="fa-solid fa-database icon"></i>
             </NavLink>
@@ -90,18 +94,6 @@ const App = () => {
           <CustomerInfo customer={selected}>
           </CustomerInfo>
           <div className='button-field'>
-           <Button 
-             text="Delete" 
-             selected={selected}
-             setDataDB={setDataDB}
-             setDataWeb={setDataWeb}
-             setActive={setActive}
-             setSelected={setSelected}
-             dataWeb={dataWeb}
-             dataDB={dataDB} 
-             color="red"
-             type="delete">
-           </Button>
            </div>
           </div>
         </div>
@@ -112,10 +104,21 @@ const App = () => {
             <List 
               index={-1} 
               data={dataDB} 
-              clickEvent={setSelected}
               filter={filter}
-              setActive={setActive}
-              activeIndex={activeIndex}>        
+              activeIndex={activeIndex}
+              setSelected={setSelected}
+              setActive={setActive}> 
+              <Button 
+               dataWeb={dataWeb}
+               dataDB={dataDB} 
+               selected={selected}
+               setDataWeb={setDataWeb}
+               setDataDB={setDataDB}
+               setSelected={setSelected}
+               setActive={setActive}
+               color="red"
+               type="Delete">
+           </Button>                   
             </List>
           </div>
         </div>
@@ -130,8 +133,15 @@ const App = () => {
               setFilter={setFilter}>
             </SearchField>
             <div className='button-field'>
+            </div>
+            <List
+             index={-1} 
+             data={dataWeb} 
+             activeIndex={activeIndex}  
+             filter={filter}        
+             setSelected={setSelected}
+             setActive={setActive}>
               <Button 
-                text="Add" 
                 selected={selected} 
                 dataWeb={dataWeb}
                 dataDB={dataDB} 
@@ -140,16 +150,8 @@ const App = () => {
                 setActive={setActive}
                 setSelected={setSelected}
                 color="blue"
-                type="add">
-              </Button> 
-            </div>
-            <List
-             index={-1} 
-             data={dataWeb} 
-             clickEvent={setSelected}
-             filter={filter}
-             setActive={setActive}
-             activeIndex={activeIndex}>   
+                type="Add">
+              </Button>                   
             </List>
           </div>
         </div>

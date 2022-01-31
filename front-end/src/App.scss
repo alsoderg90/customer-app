@@ -1,4 +1,5 @@
 $blue: #0d6efd ;
+$green: #198754 ;
 $dark: #333;
 $red: rgb(196, 34, 34);
 
@@ -12,11 +13,15 @@ body {
 
   .list-group {
     padding-bottom: 2em;
+
+    button {
+      float: right;
+    }
   
   }
 
   .button {
-    background-color: $blue;
+    background-color: $green;
     margin-left: .1em;
     padding: 2px 5px 2px 5px;
     border: 0px;
@@ -26,14 +31,9 @@ body {
     &.red {
       background-color: $red;
     }
-
-    &:disabled {
-      opacity: 65%;
-    }
   }
 
   .search-field {
-
     padding-bottom: 1em;
 
     button {

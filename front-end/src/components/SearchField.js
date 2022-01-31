@@ -12,7 +12,9 @@ const searchField = ({ setFilter }) => {
               name="search"
               autoComplete="off">
             </input>
-            <button disabled={true}> <i className="fa fa-search"></i> </button>
+            <button disabled={true}> 
+              <i className="fa fa-search"></i>
+            </button>
         </div>
     )
 }

@@ -1,16 +1,16 @@
 import customerService from '../services/customer'
 import { Store } from 'react-notifications-component';
 
-const CustomButton = ( {text, selected, dataWeb, dataDB, setDataDB, setDataWeb, color , type, setActive, setSelected }) => {
+const CustomButton = ( {selected, dataWeb, dataDB, setDataDB, setDataWeb, color , type, setActive, setSelected }) => {
 
     const id = selected.id
     const handleClick = () => {
 
         switch(type) {
-            case "add":
+            case "Add":
                 addCustomer()
                 break;
-            case "delete":
+            case "Delete":
                 deleteCustomer()
                 break
             default:
@@ -24,12 +24,12 @@ const CustomButton = ( {text, selected, dataWeb, dataDB, setDataDB, setDataWeb, 
               setDataDB(dataDB.concat(selected))
               setDataWeb(dataWeb.filter(item => item.id !== id))
               setActive(-1) 
-  
+              setSelected({})
               setNotification("added","success")
           })
           .catch(error => {
             console.log(error)
-            setNotification("not deleted!", "danger")
+            setNotification("not added", "danger")
           })
     }
 
@@ -47,7 +47,7 @@ const CustomButton = ( {text, selected, dataWeb, dataDB, setDataDB, setDataWeb, 
               })
               .catch(error => {
                 console.log(error)
-                setNotification("not deleted!", "danger")
+                setNotification("not deleted", "danger")
               })           
         }
     }
@@ -67,24 +67,14 @@ const CustomButton = ( {text, selected, dataWeb, dataDB, setDataDB, setDataWeb, 
             }
         })
     }
-
-    const style = {
-        borderBottom: "2px solid orange"
-    }
-
-    const none = {
-        boder: "0px"
-    }
-    
+   
     return (
     <div>
         <button 
         className={ `button ${color}` }
-        onClick={handleClick}
-        disabled={id ? false : true}>
-        {text}
+        onClick={handleClick}>
+        {type}
         </button>
-        {selected.name}
     </div>
     )
 }
