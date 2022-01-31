@@ -1,4 +1,4 @@
-### Single-page application (SPA) created to learn basics of .NET framework"
+### Single-page application (SPA) created to learn .NET framework basics
 
 
 [Test Here!](https://alsoderg90.github.io/deployed/)
@@ -8,5 +8,5 @@
 
 
 - fetch data from internet/database and display
-- save data to database
-- delete data from database 
+- save data 
+- delete data 

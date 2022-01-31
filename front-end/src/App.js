@@ -7,7 +7,6 @@ import CustomerInfo from './components/CustomerInfo'
 import CustomerService from './services/customer'
 import SearchField from './components/SearchField'
 import { useEffect, useState } from 'react';
-
 import { ReactNotifications } from 'react-notifications-component'
 import { BrowserRouter as Router, 
   Switch, Route, NavLink, } from "react-router-dom"

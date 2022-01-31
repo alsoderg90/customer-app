@@ -20,7 +20,6 @@ const CustomButton = ( {selected, dataWeb, dataDB, setDataDB, setDataWeb, color 
     function addCustomer() {
         customerService
           .create(selected).then(response => {
-              console.log(response)
               setDataDB(dataDB.concat(selected))
               setDataWeb(dataWeb.filter(item => item.id !== id))
               setActive(-1) 
@@ -35,10 +34,8 @@ const CustomButton = ( {selected, dataWeb, dataDB, setDataDB, setDataWeb, color 
 
     function deleteCustomer() {
         if (window.confirm("Are You Sure?")) {
-            console.log(selected)
             customerService
               .Delete(id).then(response => {
-                  console.log(response)
                   setDataDB(dataDB.filter(item =>  item.id !== id))
                   setDataWeb(dataWeb.concat(selected))
                   setActive(-1)

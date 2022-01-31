@@ -6,7 +6,7 @@ const List = ( props ) => {
         )
     
     return(
-        <ul className="list-group">
+        <ul className="list-group customList">
         { filtered.map( (item, i) => {
             return ( 
             <li key={i} 
