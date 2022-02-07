@@ -1,5 +1,8 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
+
 const List = ( props ) => {
+    const history = useHistory()
     
     const filtered = props.data.filter(customer => 
         customer.name.toUpperCase().includes(props.filter)
@@ -13,6 +16,8 @@ const List = ( props ) => {
                 onClick={(e) => {
                     props.setActive(i)
                     props.setSelected(item)
+                    props.setCopy(item)
+                    {props.redirect ? history.push("/customer") : history.push(0)}
                 }}
                 className={i === props.activeIndex ? "list-group-item active" : "list-group-item"  }>       
                 {item.name}

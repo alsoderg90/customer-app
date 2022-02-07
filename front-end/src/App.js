@@ -1,6 +1,7 @@
 import './App.scss';
 import 'react-notifications-component/dist/theme.css'
 import data from './data.json'
+import customer from './customer.json'
 import List from './components/List'
 import Button from './components/CustomButton'
 import CustomerInfo from './components/CustomerInfo'
@@ -8,22 +9,23 @@ import CustomerService from './services/customer'
 import SearchField from './components/SearchField'
 import { useEffect, useState } from 'react';
 import { ReactNotifications } from 'react-notifications-component'
-import { BrowserRouter as Router, 
+import { HashRouter as Router, 
   Switch, Route, NavLink, } from "react-router-dom"
 
-
-
 const App = () => {
+
   //data from web
   const [ dataWeb, setDataWeb ] = useState([])
   //data from database
   const [ dataDB, setDataDB ] = useState([])
   // selected list item
-  const [ selected, setSelected ] = useState({})
+  const [ selected, setSelected ] = useState(customer)
   // text filter 
   const [ filter, setFilter ] = useState("")
   // index of the active list element
   const [ activeIndex, setActive ] = useState("")
+
+  const [copy, setCopy ] = useState(customer)
   
   useEffect(() => {
     CustomerService
@@ -75,32 +77,59 @@ const App = () => {
               to="/database"
               onClick={() => { 
                 setActive(-1)
-                setSelected({})
                 setFilter("") 
                 }}> Database 
               <i className="fa-solid fa-database icon"></i>
             </NavLink>
-          </li>          
+          </li>              
         </ul>
       </div>
 
     <Switch>
+      <Route path={"/customer"}>
+      <div className='container'>
+       <div className='row'>
+         <div className='col info-area'>
+          <CustomerInfo 
+            customer={selected}
+            setSelected={setSelected}
+            copy={copy}>        
+          </CustomerInfo>
+          <Button 
+               dataWeb={dataWeb}
+               dataDB={dataDB} 
+               selected={selected}
+               setDataWeb={setDataWeb}
+               setDataDB={setDataDB}
+               setSelected={setSelected}
+               setActive={setActive}
+               type="Edit">
+           </Button>  
+           <Button 
+               dataWeb={dataWeb}
+               dataDB={dataDB} 
+               selected={selected}
+               setDataWeb={setDataWeb}
+               setDataDB={setDataDB}
+               setSelected={setSelected}
+               setActive={setActive}
+               type="Delete">
+           </Button>  
+        </div>
+        </div>
+      </div>
+
+      </Route>
       <Route path="/database">
       <div className='container'>
         <div className='row'>
-        <div className='col'>
-          <div className='info-box col'>
-          <CustomerInfo customer={selected}>
-          </CustomerInfo>
-          <div className='button-field'>
-           </div>
-          </div>
-        </div>
           <div className='col'>
             <SearchField 
               setFilter={setFilter}>
             </SearchField>
             <List 
+              setCopy={setCopy}
+              redirect={true}
               index={-1} 
               data={dataDB} 
               filter={filter}
@@ -115,7 +144,6 @@ const App = () => {
                setDataDB={setDataDB}
                setSelected={setSelected}
                setActive={setActive}
-               color="red"
                type="Delete">
            </Button>                   
             </List>
@@ -123,6 +151,7 @@ const App = () => {
         </div>
       </div>
       </Route>
+
 
       <Route path="/">
       <div className='container'>
@@ -134,6 +163,8 @@ const App = () => {
             <div className='button-field'>
             </div>
             <List
+             setCopy={setCopy}
+             redirect={false}
              index={-1} 
              data={dataWeb} 
              activeIndex={activeIndex}  
@@ -148,7 +179,6 @@ const App = () => {
                 setDataWeb={setDataWeb}
                 setActive={setActive}
                 setSelected={setSelected}
-                color="blue"
                 type="Add">
               </Button>                   
             </List>

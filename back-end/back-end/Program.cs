@@ -46,6 +46,33 @@ app.MapPost("/api/customers", async (Customer customer, CustomerContext db) =>
         return Results.Created($"/customers/{customer.Id}", customer);
     }) ;
 
+app.MapPut("/api/customers/{id}", async (int id, Customer newCustomer, CustomerContext db) =>
+{
+    var oldCustomer = await db.Customers.FindAsync(id);
+
+    if (oldCustomer is null) return Results.NotFound();
+
+    oldCustomer.Name = newCustomer.Name;
+
+    await db.SaveChangesAsync();
+
+    var oldAddress = await db.Addresses.FindAsync(id);
+
+    if (oldAddress is null) return Results.NotFound();
+
+    oldAddress.StreetAddress = newCustomer.Address.StreetAddress;
+
+    oldAddress.State = newCustomer.Address.State;
+
+    oldAddress.City = newCustomer.Address.City;
+
+    oldAddress.Zip = newCustomer.Address.Zip;
+
+    await db.SaveChangesAsync();
+
+    return Results.Ok(oldCustomer);
+});
+
 app.MapDelete("/api/customers/{id}", async (int id, CustomerContext db) =>
     {
         if (await db.Customers.FindAsync(id) is Customer customer)

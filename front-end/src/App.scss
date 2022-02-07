@@ -35,9 +35,22 @@ body {
     border: 0px;
     border-radius: 5px;
     color: white;
+    float: left;
+  
+    &.lila {
+      background-color: $lila;
+    }
 
-    &.red {
+    &.Delete {
       background-color: $red;
+    }
+
+    &.Edit {
+      background-color: $green;
+    }
+
+    &:disabled {
+      opacity: 50%;
     }
   }
 
@@ -50,7 +63,14 @@ body {
       color: $lila;
     }
 
-  } 
+  }
+
+  .buttons {
+    button {
+      float: right;
+      background-color: $lila;
+    }
+  }
 
   .icon {
       margin-left: 10px;
@@ -116,13 +136,31 @@ body {
     flex: 75%;
   }
   
-  .info-box {
+  .info-area{
       background-color: #f2f2f2;
       padding: 5px 20px 0px 20px;
       margin-bottom: 1em;
       border: 1px solid lightgrey;
       border-radius: 3px;
       min-width: 15em;
+
+      button {
+        margin-bottom: 1em;
+      }
+
+      label {
+        margin-right: .5em;
+      }
+      .labels {
+        float:left;
+      }
+      .inputs {
+        clear: none
+      }
+      input {
+        display: block;
+        margin-bottom: 0.2em;
+      }
   }
   
   label {

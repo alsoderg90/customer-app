@@ -1,29 +1,45 @@
 import customerService from '../services/customer'
 import { Store } from 'react-notifications-component';
+import { useHistory } from 'react-router-dom';
 
-const CustomButton = ( {selected, dataWeb, dataDB, setDataDB, setDataWeb, color , type, setActive, setSelected }) => {
+const CustomButton = ( {selected, dataWeb, dataDB, setDataDB, setDataWeb, type, setSelected, setActive}) => {
+    const history = useHistory()
 
     const id = selected.id
-    const handleClick = () => {
-
+    const handleClick = (e) => {
+        e.stopPropagation();
+        
         switch(type) {
             case "Add":
                 addCustomer()
                 break;
             case "Delete":
                 deleteCustomer()
-                break
+                break;
+            case "Edit":
+                editCustomer()
+                break;    
             default:
         }
     }
 
-    function addCustomer() {
+    const editCustomer = () => {
+        customerService
+          .Edit(id, selected).then(response => {
+              setDataDB(dataDB.map(item => item.id == id ? selected : item))
+              setNotification("edited","success")
+          })
+          .catch(error => {
+            console.log(error)
+            setNotification("not edited", "danger")
+          })
+    }
+
+    const addCustomer = () => {
         customerService
           .create(selected).then(response => {
               setDataDB(dataDB.concat(selected))
               setDataWeb(dataWeb.filter(item => item.id !== id))
-              setActive(-1) 
-              setSelected({})
               setNotification("added","success")
           })
           .catch(error => {
@@ -32,8 +48,9 @@ const CustomButton = ( {selected, dataWeb, dataDB, setDataDB, setDataWeb, color 
           })
     }
 
-    function deleteCustomer() {
+    const deleteCustomer = () => {
         if (window.confirm("Are You Sure?")) {
+            console.log(selected)
             customerService
               .Delete(id).then(response => {
                   setDataDB(dataDB.filter(item =>  item.id !== id))
@@ -45,8 +62,9 @@ const CustomButton = ( {selected, dataWeb, dataDB, setDataDB, setDataWeb, color 
               .catch(error => {
                 console.log(error)
                 setNotification("not deleted", "danger")
-              })           
+              }) 
         }
+        history.push('/database')
     }
 
     function setNotification(title, type) {
@@ -68,9 +86,10 @@ const CustomButton = ( {selected, dataWeb, dataDB, setDataDB, setDataWeb, color 
     return (
     <div>
         <button 
-        className={ `button ${color}` }
-        onClick={handleClick}>
-        {type}
+        className={ `button ${type}`}
+        onClick={handleClick}
+        >
+          {type}
         </button>
     </div>
     )
