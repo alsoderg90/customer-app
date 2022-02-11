@@ -10,3 +10,4 @@
 - fetch data from internet/database and display
 - save data 
 - delete data 
+- edit data
